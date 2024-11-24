@@ -39,7 +39,7 @@
             display: flex;
             justify-content: space-between;
             gap: 2rem;
-            max-width: 1200px;
+            max-width: 1350px;
             margin: 2rem auto;
             padding: 0 1rem;
         }
@@ -105,6 +105,16 @@
             color: #c29d00; /* Darken the color on click */
         }
 
+        /* Hover effect for paragraph */
+        .durag p:hover {
+            color: #FFD700; /* Change to yellow on hover */
+        }
+
+        /* Darker color when clicked (active state) */
+        .durag p:active {
+            color: #c29d00; /* Darken the color on click */
+        }
+
         .non-clickable {
             color: #e0e0e0;
             cursor: default;
@@ -133,6 +143,27 @@
             font-size: 1rem;
             box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
         }
+
+        /* Intro Container */
+.intro-container {
+    flex-direction: column; /* Ensures this container stacks above others */
+    margin-bottom: 2rem; /* Adds spacing below the intro */
+    margin-top: 0.5rem;
+}
+
+.intro-box {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    padding-bottom: 0.5rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    text-align: justify;
+    max-width: 1350px;
+    margin: 0 auto; /* Centers the intro box */
+    color: #e0e0e0;
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
 
         footer p {
             margin: 0;
@@ -183,10 +214,21 @@
 </head>
 <body>
     <header>
-        <h1>The Effect of TRAIN Law on SMEs</h1>
-        <p>How the TRAIN Law affects business management for small and medium enterprises.</p>
+        <h1>THE EFFECT OF TRAIN LAW ON BUSINESS MANAGEMENT OF SMALL AND MEDIUM ENTERPRISES</h1>
     </header>
-
+    <div class="content-container intro-container">
+        <div class="intro-box">
+            <div class="durag">
+                <p data-sound="sounds\010.mp3">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Business management plays a crucial role in adapting sales and cost strategies after the implementation of the TRAIN Law, as it affects pricing, taxation, and operational expenses. Effective management ensures that SMEs can adjust product pricing to remain competitive while maintaining profitability. Additionally, cost management becomes essential to offset increased tax-related expenses and sustain business growth.
+            </div>
+                <br>
+            </p>
+            <p>
+                <b>Here are some strategies to cope with the changes in the TRAIN Law that affect the business management of SMEs:</b>
+            </p>
+        </div>
+    </div>
     <div class="content-container">
         <!-- Sales Management Section -->
         <div class="content-box">
@@ -257,25 +299,26 @@
 
     <script>
         // Store the currently playing audio
-        let currentAudio = null;
-    
-        // Audio playback for paragraphs with data-sound attribute
-        const paragraphs = document.querySelectorAll('.info-item p[data-sound]');
-        paragraphs.forEach(paragraph => {
-            paragraph.addEventListener('click', function () {
-                const audioSource = paragraph.getAttribute('data-sound');
-    
-                // If a sound is already playing, stop it
-                if (currentAudio) {
-                    currentAudio.pause(); // Pause the currently playing audio
-                    currentAudio.currentTime = 0; // Reset the audio to the start
-                }
-    
-                // Create a new Audio object for the clicked sound
-                currentAudio = new Audio(audioSource);
-                currentAudio.play(); // Play the new sound
-            });
-        });
+       // Store the currently playing audio
+let currentAudio = null;
+
+// Audio playback for paragraphs with data-sound attribute
+const paragraphs = document.querySelectorAll('.info-item p[data-sound], .intro-box p[data-sound]'); // Include intro-box here
+paragraphs.forEach(paragraph => {
+    paragraph.addEventListener('click', function () {
+        const audioSource = paragraph.getAttribute('data-sound');
+
+        // If a sound is already playing, stop it
+        if (currentAudio) {
+            currentAudio.pause(); // Pause the currently playing audio
+            currentAudio.currentTime = 0; // Reset the audio to the start
+        }
+
+        // Create a new Audio object for the clicked sound
+        currentAudio = new Audio(audioSource);
+        currentAudio.play(); // Play the new sound
+    });
+});
     </script>
 </body>
 </html>
